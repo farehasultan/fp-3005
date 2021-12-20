@@ -60,5 +60,17 @@ html
                         th=sale.isbn_count
                         th=sale.sales
                         th=sale.net_sales
-
+        if type.publisher
+            table(style='width:100%')
+                tr
+                    th Publisher
+                    th Number of Books 
+                    th Total Sales 
+                    th Net Sales
+                for sale in sales
+                    tr 
+                        th=sale.publisher
+                        th=sale.isbn_count
+                        th=sale.sales
+                        th=sale.net_sales
 
