@@ -1,0 +1,14 @@
+html
+    head
+        title List of Orders
+    body
+        include ./partials/header
+        br
+        h1 List of Your Orders
+        if orders.length > 0
+            each order in orders
+                a(href="/orders/" + order["order_id"])= order.order_id
+                p Details
+                p=order.order_id +"   "+ order.user_id +"   "+ order.status +"   $"+ order.total +"   "+ order.order_date
+        else
+            p There are currently no orders stored in the database.

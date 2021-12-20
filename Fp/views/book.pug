@@ -1,0 +1,45 @@
+link(rel='stylesheet' href='/book.css')
+
+html
+    head
+        title Book
+    body
+        include ./partials/header
+        .row
+            .column
+                img(src=book.image)
+            
+            .column
+                h1= book.title
+                h4= book.rating + "/5 by Goodreads"
+                h3= "By "+ book.author 
+                p   Description: 
+                p   Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Cras sed enim et urna efficitur pulvinar at ut sem. Nulla vel nunc sit amet massa varius maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquam erat nisl, in rhoncus tortor iaculis vitae.  Etiam ut leo a sapien luctus malesuada. Ut nec convallis augue, blandit varius mauris. Donec id malesuada risus, quis efficitur diam.
+                br
+                br
+                p="Format: "+ book.format + " |" + book.length + " pages"
+                p="Publisher: "+ book.publisher 
+                p="Publication City/Country: "+ book.place
+                p="Publication Date: "+book.year  
+                p="Genre: "+ book.category 
+                p="ISBN: " + book.isbn
+
+            .column(style='background-color:#fff;')
+                p="List Price $"+book.price
+                if book.stock > 1
+                    h4=`In Stock`
+                    br
+                    br
+                    button(onclick='addToCart()') Add to Cart 
+                else if book.stock==1
+                    h4=`Only 1 left`
+                    br
+                    br
+                    button(onclick='addToCart()') Add to Cart
+                else
+                    h4=`Out of Stock`
+        script(type='text/javascript').                                                   
+            let book =!{JSON.stringify(book)};   
+        script(src='/addToCart.js')
+            
+                

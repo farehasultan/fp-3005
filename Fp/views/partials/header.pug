@@ -1,0 +1,33 @@
+link(rel='stylesheet' href='/header.css')
+div#header
+    ul
+        li
+            a.active(href='/') Home
+        li
+            a(href='/books') Books
+        
+        if user.loggedin == true
+            if user.admin 
+                li 
+                    a(href='/addbook') Add a Book
+                li 
+                    a(href='/removebook') Remove a Book
+                li 
+                    a(href='/reports') Reports
+            else
+                li
+                    a.active(href='/orders') Orders
+                li 
+                    a(href='/cart') Cart
+            li 
+                a(href='/logout') Logout
+            
+
+        else
+            li
+                a(href='/register') Register 
+            li
+                form(action='/login' method='post')
+                    input(type='text' name='username' required)
+                    input(type='password' name='password' required)
+                    button(type='submit') Login

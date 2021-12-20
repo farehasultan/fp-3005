@@ -1,0 +1,36 @@
+link(rel='stylesheet' href='/cart.css')
+
+html
+    head
+        title View Cart
+    body
+        include ./partials/header
+        br
+        -let total=0
+        each item in cart 
+            p=`Title: `+ item.title + ` Quantity: ` + item.quantity + ` Price: ` + item.price
+            button(value = item.id, onclick= 'removeFromCart(this)') Remove Item
+            -total+=(item.price*item.quantity)
+
+
+        p(id=total)=`Total: `+total 
+        br
+        
+        p Shipping Address 
+        form(action='/placeorder' method='post')
+            input( type="text" id="ship_streetno" name="ship_streetno" value=ship.street_number)
+            input( type="text" id="ship_streetname" name="ship_streetname" value= ship.street_name)
+            input( type="text" id="ship_city" name="ship_city" value= ship.city)
+            input( type="text" id="ship_province" name="ship_province" value= ship.province)
+            input( type="text" id="ship_country" name="ship_country" value= ship.country)
+            input( type="text" id="ship_postalcode" name="ship_postalcode" value= ship.postal_code)
+            p Billing Address
+            input( type="text" id="bill_streetno" name="bill_streetno" value= bill.street_number)
+            input( type="text" id="bill_streetname" name="bill_streetname" value= bill.street_name)
+            input( type="text" id="bill_city" name="bill_city" value=bill.city)
+            input( type="text" id="bill_province" name="bill_province" value= bill.province)
+            input( type="text" id="bill_country" name="bill_country" value= bill.country)
+            input( type="text" id="bill_postalcode" name="bill_postalcode" value= bill.postal_code)
+            button(type='submit') Place Order 
+
+        script(src='/placeOrder.js')

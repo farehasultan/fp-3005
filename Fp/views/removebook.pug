@@ -1,0 +1,11 @@
+html
+    head
+        title Remove a Book
+    body
+        include ./partials/header
+        h1 Let's Remove a Book!
+        p Please enter the "ISBN" of the book you want to remove!
+        form(action='/removebook' method='post')
+            p ISBN
+                input(type='text' name='ISBN' required) 
+            button(type='submit') Remove

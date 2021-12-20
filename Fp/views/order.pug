@@ -1,0 +1,14 @@
+link(rel='stylesheet' href='/book.css')
+
+html
+    head
+        title Order
+    body
+        include ./partials/header
+        
+        h1= order[0].order_id
+        each item in order
+            p Details
+            p=`Book's ISBN : `+item.isbn +"   Quantity: "+ item.quantity
+
+                

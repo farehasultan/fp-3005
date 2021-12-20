@@ -1,0 +1,24 @@
+link(rel='stylesheet' href='/cards.css')
+
+html
+    head
+        title List of Books
+    body
+        include ./partials/header
+        br
+        include ./partials/search2
+        br
+        h1 List of Books in Store
+        if books.length > 0
+            each book in books 
+                .card 
+                    img(src=book.image alt=book.title style='width:100%')
+                    h1
+                        a(href="/books/" + book["isbn"])= book.title
+                    .price=`$ `+ book.price   
+                    p=`By ` + book.author
+                    p
+                        a(href="/books/" + book["isbn"]) 
+                            button View Book 
+        else
+            p There are currently no users stored in the database.

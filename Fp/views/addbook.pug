@@ -1,0 +1,37 @@
+html
+    head
+        title Add a Book
+    body
+        include ./partials/header
+        h1 Let's add a new Book!
+
+        form(action='/addbook' method='post')
+            p ISBN
+                input(type='text' name='ISBN' required)
+            p Title
+                input(type='text' name='title' required)
+            p Author 
+                input(type='text' name='author' )
+            p Price 
+                input(type='text' name='price' required)
+            p Year
+                input(type='text' name='year')
+            p Genre
+                input(type='text' name='category' required)
+            p Publisher
+                input(type='text' name='publisher' required)
+            p Place of Publication
+                input(type='text', name='place' )
+            p Rating /5
+                input(type='text' name='rating')
+            p Format (paperback, hardcover etc.)
+                input(type='text' name='format')
+            p Number of Pages
+                input(type='text' name='length')
+            p Stock 
+                input(type='text' name='stock' required)
+            p Image URL
+                input(type='text' name='image' )
+            p Publisher's Percentage
+                input(type='text' name='percentage' required)
+            button(type='submit') Add Book

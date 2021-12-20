@@ -1,0 +1,14 @@
+html
+    head
+        title Registration Form
+    body
+        include ./partials/header
+        h1 Let's create an account! 
+        if !available 
+            p This username is already taken! Enter a new username.
+        
+        form(action='/register' method='post')
+            input(type='text' name='username' required)
+            input(type='password' name='password' required)
+            button(type='submit') Register 
+        

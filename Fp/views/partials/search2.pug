@@ -1,0 +1,12 @@
+link(rel='stylesheet' href='/search2.css')
+
+.topnav
+  form.search_box(action='./books' method='post')
+    select#category(name='category')
+      option(value='title') Title
+      option(value='author') Author
+      option(value='ISBN') ISBN
+      option(value='genre') Genre
+    .search-container
+      input(type='text' placeholder='Search..' name='search')
+      button(type='submit') Search

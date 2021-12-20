@@ -1,0 +1,64 @@
+html 
+    head 
+        title Reports
+    body
+        include ./partials/header
+        h2 Welcome to Reports Page 
+        form(action='/reports'  method="post")
+            input(type='radio' name='reporttype' value='genre')
+            label(for='genre') genre
+            br
+            input(type='radio' name='reporttype' value='publisher')
+            label(for='publisher') publisher
+            br
+            input(type='radio' name='reporttype' value='overall' checked)
+            label(for='overall') overall
+            br
+            input(type='submit' value='Generate Report') 
+        if type.overall
+            table(style='width:100%')
+                tr
+                    th Order ID
+                    th Book ID
+                    th Quantity
+                    th Total Sales 
+                    th Publisher's Percent 
+                    th Net Sale
+                -let netSale=0
+                -let totalSales=0
+                -let pubPercent=0
+                for sale in sales
+                    tr 
+                        th=sale.order_id
+                        th=sale.isbn
+                        th=sale.quantity
+                        th=sale.price*sale.quantity 
+                        -totalSales+=(sale.price*sale.quantity)
+                        th=(sale.percentage/100) * (sale.price*sale.quantity)
+                        -pubPercent+=((sale.percentage/100) * (sale.price*sale.quantity))
+                        th=(sale.price*sale.quantity)-(sale.percentage/100 * (sale.price*sale.quantity))
+                        -netSale+=((sale.price*sale.quantity)-(sale.percentage/100 * (sale.price*sale.quantity)))
+
+                tr 
+                    th=''
+                    th=''
+                    th='Summary: '
+                    th=totalSales
+                    th=pubPercent
+                    th=netSale
+        
+        if type.genre
+            table(style='width:100%')
+                tr
+                    th Genre
+                    th Number of Books 
+                    th Total Sales 
+                    th Net Sales
+                for sale in sales
+                    tr 
+                        th=sale.category
+                        th=sale.isbn_count
+                        th=sale.sales
+                        th=sale.net_sales
+
+
