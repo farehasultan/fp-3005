@@ -1,0 +1,33 @@
+/* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_two_columns_flex */
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  display: flex;
+}
+
+/* Create two equal columns that sits next to each other */
+.column {
+  flex: 50%;
+  padding-top: 30px;
+  margin: 30px;
+  align-items: center;
+  
+}
+
+button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+button:hover{
+  background-color: cornflowerblue;
+}
+
