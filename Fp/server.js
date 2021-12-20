@@ -182,7 +182,24 @@ function removeFromCart(req,res,next){
     }
 }
 function searchBooks(req,res,next){ 
-    console.log("here is the", req.body.search);
+    let category = req.body.category;
+    let text;
+    if (req.body.search!=''){
+        text = req.body.search;
+    }
+    else{
+        res.status(404).send("Enter the search query");
+    }
+    client.query("SELECT * FROM book WHERE " +category+ "= '"+ text+"';", (err, result) => {
+        if(err){return err;}
+        if(result){
+            
+           
+            res.status(200).render("books",{books:result.rows, user: curr_session});
+        }
+       
+
+    });
 }
 
 //Placing the order and saving the new addresses
@@ -280,6 +297,15 @@ function newReports(req,res,next){
     }
     });
 }
+    else if (val == 'publisher'){
+        client.query('select publisher,count(ISBN) as isbn_count, sum(book.price*order_items.quantity) as sales, sum(book.price*order_items.quantity-(book.percentage/100)*(book.price*order_items.quantity)) as net_sales from book inner join order_items using (isbn) group by publisher;', (err, result) => {
+            if(err){return err;}
+            if(result){
+                console.log(result.rows);
+                res.status(200).render("customreports",{ sales: result.rows,user: curr_session, type:{publisher:true}});
+    }
+    });
+    }
 }
 
 
