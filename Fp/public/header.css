@@ -1,0 +1,86 @@
+/*header idea/reference from W3 School*/
+/* the button css idea/ref https://www.w3schools.com/csS/tryit.asp?filename=trycss_buttons_basic*/
+
+
+  
+ul {
+    list-style-type: none;
+    background-color: #040005;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; 
+}
+
+h1{
+    
+    text-align: center;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+  
+li {
+    float: left;
+  }
+  
+  
+li a {
+    
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    padding: 15px 15px;
+    display: block;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: #567ff1;
+  }
+  
+  
+  a:link {
+    text-decoration: none;
+  }
+  
+  a:visited {
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  a:active {
+    text-decoration: underline;
+  }
+
+  button,input[type=submit] {
+    background-color: #233fe0;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+button:hover, input[type=submit]:hover {
+    background-color: #8381ee;
+}
+  
+input[type=text], input[type=number],select, input[type=password]{
+    width: 25%;
+    padding: 5px 5px;
+    display: inline-block;
+    border: 1px solid #512adf;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: whitesmoke;
+    font-size: 20px;
+}
+  
+  
